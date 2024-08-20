@@ -1,13 +1,8 @@
 package exercises;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import lib.BaseTestCase;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
