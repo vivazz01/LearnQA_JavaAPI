@@ -1,13 +1,12 @@
+package tests;
+
 import io.restassured.RestAssured;
-import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class HelloWorldTest {
 
