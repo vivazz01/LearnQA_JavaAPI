@@ -33,7 +33,7 @@ public class UserEditTest extends BaseTestCase {
         Response responseGetAuth = RestAssured
                 .given()
                 .body(authData)
-                .post("https://playground.learnqa.ru/api/login/")
+                .post("https://playground.learnqa.ru/api/user/login/")
                 .andReturn();
 
         //EDIT
