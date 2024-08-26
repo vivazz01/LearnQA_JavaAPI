@@ -10,6 +10,10 @@ public class DataGenerator {
         return "learnqa" + timestamp + "@example.com";
     }
 
+    public static StringBuilder getRandomStringLength(int length) {
+        return new StringBuilder(length);
+    }
+
     public static Map<String, String> getRegistrationData() {
         Map<String, String> data = new HashMap<>();
         data.put("email", DataGenerator.getRandomEmail());
