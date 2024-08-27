@@ -1,6 +1,7 @@
 package exercises;
 
 import io.restassured.RestAssured;
+import io.restassured.http.Cookie;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -44,22 +45,30 @@ public class Ex9PasswordSelection {
         data.put("login", "super_admin");
         data.put("password", password);
 
-        Response response = RestAssured
+        Response responseForGet = RestAssured
                 .given()
                 .body(data)
                 .get("https://playground.learnqa.ru/ajax/api/get_secret_password_homework")
                 .andReturn();
 
-        String authCookie = response.getCookie("auth_cookie");
-//        System.out.println(authCookie);
+        String responseCookie = responseForGet.getCookie("auth_cookie");
+        Map<String, String> cookies = new HashMap<>();
+        cookies.put("auth_cookie", responseCookie);
 
-        Response responseWithCookie = RestAssured
+        Response responseForCheck = RestAssured
                 .given()
-                .cookie(authCookie)
+                .body(data)
+                .cookies(cookies)
                 .get("https://playground.learnqa.ru/ajax/api/check_auth_cookie")
                 .andReturn();
 
-        String answer = responseWithCookie.asString();
-        System.out.println(answer);
+        String answer = responseForCheck.asString();
+//        System.out.println(answer);
+
+        if (answer.equals("You are not authorized")) {
+            System.out.println("Wrong password");
+        } else if (answer.equals("You are authorized")) {
+            System.out.println("Your password is: " + password);
+        }
     }
 }
