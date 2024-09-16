@@ -10,6 +10,11 @@ public class DataGenerator {
         return "learnqa" + timestamp + "@example.com";
     }
 
+    public static String getRandomInvalidEmail() {
+        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+        return "learnqa" + timestamp + ".example.com";
+    }
+
     public static StringBuilder getRandomStringLength(int length) {
         return new StringBuilder(length);
     }
@@ -17,6 +22,17 @@ public class DataGenerator {
     public static Map<String, String> getRegistrationData() {
         Map<String, String> data = new HashMap<>();
         data.put("email", DataGenerator.getRandomEmail());
+        data.put("password", "123");
+        data.put("username", "learnqa");
+        data.put("firstName", "learnqa");
+        data.put("lastName", "learnqa");
+
+        return data;
+    }
+
+    public static Map<String, String> getRegistrationInvalidData() {
+        Map<String, String> data = new HashMap<>();
+        data.put("email", DataGenerator.getRandomInvalidEmail());
         data.put("password", "123");
         data.put("username", "learnqa");
         data.put("firstName", "learnqa");
