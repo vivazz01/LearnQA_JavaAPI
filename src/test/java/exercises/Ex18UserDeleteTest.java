@@ -3,6 +3,7 @@ package exercises;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
@@ -10,6 +11,8 @@ import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -17,12 +20,14 @@ import java.util.Map;
 
 @Epic("DELETE tests")
 @Feature("DELETE")
+@Story("Delete user")
 public class Ex18UserDeleteTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
     @Test
     @Description("This test to delete another exact user")
     @DisplayName("Another exact user")
+    @Tag("Exact")
     public void deleteExactUserTest() {
         String userId = "2";
 
@@ -61,6 +66,7 @@ public class Ex18UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test to delete just created user")
     @DisplayName("Just created user")
+    @Tag("Just created")
     public void deleteJustCreatedUserTest() {
         //GENERATE USER
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -105,6 +111,7 @@ public class Ex18UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test to delete another user")
     @DisplayName("Another user")
+    @Tag("Another")
     public void deleteAnotherUserTest() {
         //GENERATE USER
         Map<String, String> userData = DataGenerator.getRegistrationData();
